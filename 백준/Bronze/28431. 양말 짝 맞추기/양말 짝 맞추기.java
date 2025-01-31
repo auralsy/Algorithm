@@ -8,13 +8,11 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		
 		int[] arr = new int[5];
-		
-		int rest = 0;
-		
 		for(int i = 0; i < 5; i++)
 		{
 			arr[i] = sc.nextInt();
 		}
+        
 		int i;
 		for(i = 0; i < 5; i++)
 		{
