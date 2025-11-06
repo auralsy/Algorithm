@@ -1,18 +1,21 @@
-import java.util.Scanner;
-public class Main
-{
-    public static void main(String[] args){
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String args[]) throws IOException {
         Scanner sc = new Scanner(System.in);
+
         int n = sc.nextInt();
-        
-        String sn = sc.next();
-        char[] cn = sn.toCharArray();
+        sc.nextLine();
+        String str = sc.nextLine();
         int sum = 0;
-        
-        for(int i = 0; i < cn.length; i++)
+
+        for(int i = 0; i < str.length(); i++)
         {
-            sum += cn[i] - '0';
+            sum = sum + Character.getNumericValue(str.charAt(i));
         }
-        System.out.print(sum);
+
+        System.out.println(sum);
     }
 }
