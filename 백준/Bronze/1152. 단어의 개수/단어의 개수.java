@@ -1,32 +1,23 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class Main {
 
-	public static void main(String[] args) 
-	{
-		Scanner sc = new Scanner(System.in);
-		
-		String s = sc.nextLine();
-		
-		int c = 0;
-		
-		for(int i = 0; i < s.length(); i++)
-		{
-			if(s.charAt(i) == ' ')
-			{
-				c++;
-			}
-		}
-		if(s.isEmpty()) {
-			System.out.println(0);
-		}
-		if(s.charAt(0) != ' ' && s.charAt(s.length()-1) != ' ') {
-			c = c + 1;
-		}
-		if(s.charAt(0) == ' ' && s.charAt(s.length()-1) == ' ') {
-			c = c - 1;
-		}
-		System.out.println(c);
-	}
+    public static void main(String args[]) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        String str = br.readLine();
+
+        StringTokenizer st = new StringTokenizer(str);
+
+        int sum = 0;
+
+        while(st.hasMoreTokens())
+        {
+            st.nextToken();
+            sum += 1;
+        }
+
+        System.out.println(sum);
+    }
 }
