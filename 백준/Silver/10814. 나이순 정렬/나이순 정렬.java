@@ -1,42 +1,43 @@
-import java.util.Scanner;
-import java.util.Arrays;
-import java.util.Comparator;
+import java.io.*;
+import java.util.*;
 
-public class Main 
-{
+public class Main {
+    public static void main(String args[]) throws IOException {
+        Scanner sc = new Scanner(System.in);
 
-	public static void main(String[] args) 
-	{
-		Scanner sc = new Scanner(System.in);
-		
-		int n = sc.nextInt();
-		
-		//2차원 배열 생성
-		String[][] arr = new String[n][2];
-		
-		//나이, 이름 입력받아 저장
-		for(int i = 0; i < n; i++)
-		{
-			arr[i][0] = sc.next();
-			arr[i][1] = sc.next();
-		}
-		
-		//정렬
-		Arrays.sort(arr, new Comparator<String[]>()
+        int n = sc.nextInt();
+
+        ArrayList<Person> list= new ArrayList<>();
+
+        for(int i = 0; i < n; i++)
         {
-            @Override
-            public int compare(String[] s1, String[] s2)
-            {
-                int age1 = Integer.parseInt(s1[0]);
-                int age2 = Integer.parseInt(s2[0]);
-                return age1 - age2;
-            }
+            int age = sc.nextInt();
+            String name = sc.next();
+
+            list.add(new Person(age, name));
+        }
+
+        Collections.sort(list, (k1, k2) -> {
+            return k1.age - k2.age;
         });
-		
-		for(int i = 0; i < n; i++)
-		{
-			System.out.println(arr[i][0] + " " + arr[i][1]);
-		}
-	}
-	
+
+        StringBuilder sb = new StringBuilder();
+        for(Person p : list)
+        {
+            sb.append(p.age).append(" ").append(p.name).append('\n');
+        }
+
+        System.out.println(sb);
+    }
+
+    public static class Person{
+        int age;
+        String name;
+
+        public Person(int age, String name)
+        {
+            this.age = age;
+            this.name = name;
+        }
+    }
 }
