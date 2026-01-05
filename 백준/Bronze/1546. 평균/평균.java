@@ -1,41 +1,36 @@
+import java.io.*;
 import java.util.*;
-import java.lang.Math;
-public class Main
-{
-    public static void main(String args[])
-    {
-        Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt();
+public class Main {
+    public static void main(String args[]) throws IOException {
+        // Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        // StringBuilder sb = new StringBuilder();
+
+        int n = Integer.valueOf(br.readLine());
 
         int[] arr = new int[n];
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
         for(int i = 0; i < n; i++)
         {
-            arr[i] = sc.nextInt();
+            arr[i] = Integer.parseInt(st.nextToken());
         }
 
         int max = arr[0];
-        for(int i = 0; i < n; i++)
+        for(int i = 1; i < n; i++)
         {
-            if(max < arr[i])
+            if(arr[i] > max)
                 max = arr[i];
         }
 
-        double[] real = new double[n];
-
-        for(int i = 0; i < n; i++)
-        {
-            real[i] = (double)arr[i]/max*100;
-        }
-
         double sum = 0;
-
         for(int i = 0; i < n; i++)
         {
-            sum += real[i];
+            sum += ((double)arr[i]/max)*100;
         }
-        double ave = sum/n;
 
-        System.out.println(ave);
+        System.out.println(sum / n);
+        }
     }
-}
