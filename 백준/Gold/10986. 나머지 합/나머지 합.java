@@ -1,44 +1,42 @@
-import java.util.Scanner;
-import java.io.IOException;
+import java.io.*;
+import java.util.*;
 
 public class Main {
+    public static void main(String args[]) throws IOException {
+        // Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        // StringBuilder sb = new StringBuilder();
 
-	public static void main(String[] args) throws IOException
-	{
-		Scanner sc = new Scanner(System.in);
-		
-		int N = sc.nextInt();
-		int M = sc.nextInt();
-		
-		long[] S = new long[N];
-		long[] C = new long[M];
-		
-		long answer = 0;
-		
-		S[0] = sc.nextInt();
-		
-		for(int i = 1; i < N; i++)
-		{
-			S[i] = S[i-1] + sc.nextInt();
-		}
-		
-		for(int i = 0; i < N; i++)
-		{
-			int rm = (int)(S[i] % M);
-			
-			if(rm == 0)
-				answer++;
-			
-			C[rm]++;
-		}
-		
-		for(int i = 0; i < M; i++)
-		{
-			if(C[i] > 1)
-			{
-				answer = answer + (C[i]*(C[i]-1)/2);
-			}
-		}
-		System.out.println(answer);
-	}
-}
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
+
+        long[] s = new long[n];
+        long[] c = new long[m];
+
+        long answer = 0;
+
+        st = new StringTokenizer(br.readLine());
+        s[0] = Integer.parseInt(st.nextToken());
+
+        for (int i = 1; i < n; i++) {
+            s[i] = s[i - 1] + Integer.parseInt(st.nextToken());
+        }
+
+        for (int i = 0; i < n; i++) {
+            int rema = (int) (s[i] % m);
+
+            if (rema == 0)
+                answer++;
+
+            c[rema]++;
+        }
+
+        for (int i = 0; i < m; i++) {
+            if (c[i] > 1)
+                answer = answer + (c[i] * (c[i] - 1) / 2);
+        }
+        System.out.println(answer);
+    }
+    }
