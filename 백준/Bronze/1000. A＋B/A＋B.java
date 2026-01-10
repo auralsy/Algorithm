@@ -1,20 +1,17 @@
 import java.io.*;
 import java.util.*;
 
-public class Main
-{
-    public static void main(String args[]) throws IOException
-    {
+public class Main {
+    public static void main(String args[]) throws NumberFormatException, IOException {
+        // Scanner sc = new Scanner(System.in);
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        // StringBuilder sb = new StringBuilder();
 
-        String Line = br.readLine();
-        StringTokenizer st = new StringTokenizer(Line);
-
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        
         int a = Integer.parseInt(st.nextToken());
         int b = Integer.parseInt(st.nextToken());
 
-        bw.write((a+b) + "");
-        bw.flush();
+        System.out.println(a+b);
     }
-}
+    }
