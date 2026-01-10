@@ -2,22 +2,20 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws NumberFormatException, IOException {
+        // Scanner sc = new Scanner(System.in);
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        // StringBuilder sb = new StringBuilder();
 
-        String str = br.readLine();
-
-        StringTokenizer st = new StringTokenizer(str);
-
-        int sum = 0;
-
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int count = 0;
+        
         while(st.hasMoreTokens())
         {
-            st.nextToken();
-            sum += 1;
+            String str = st.nextToken();
+            count++;
         }
 
-        System.out.println(sum);
+        System.out.println(count);
     }
-}
+    }
