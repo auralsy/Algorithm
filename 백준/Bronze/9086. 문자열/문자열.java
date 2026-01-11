@@ -2,16 +2,27 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    public static void main(String args[]) throws NumberFormatException, IOException {
+        // Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
 
-    public static void main(String args[]) throws IOException {
-        Scanner sc = new Scanner(System.in);
-
-        int t = sc.nextInt();
-        sc.nextLine();
-        for(int i = 1; i <= t; i++)
+        int n = Integer.parseInt(br.readLine());
+        
+        for(int i = 0; i < n; i++)
         {
-            String str = sc.nextLine();
-            System.out.printf("%s%s\n", str.charAt(0), str.charAt(str.length()-1));
+            String str = br.readLine();
+            
+            if(str.length() == 1)
+            {
+                System.out.printf("%c%c", str.charAt(0), str.charAt(0));
+                System.out.println();
+            }
+            else
+            {
+                System.out.printf("%c%c", str.charAt(0), str.charAt(str.length()-1));
+                System.out.println();
+            }
         }
     }
-}
+    }
