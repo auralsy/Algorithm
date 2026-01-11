@@ -2,36 +2,34 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String args[]) throws IOException {
+    public static void main(String args[]) throws NumberFormatException, IOException {
+        // Scanner sc = new Scanner(System.in);
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
 
         String str = br.readLine();
-        int t = str.length();
-        int[] arr = new int[t];
 
-        for(int i = 0; i < t; i++)
+        int[] arr = new int[str.length()];
+
+        for(int i = 0; i < str.length(); i++)
         {
-            arr[i] = str.charAt(i) - '0';
+            arr[i] = Integer.parseInt(str.substring(i, i+1));
         }
 
-        for(int i = 0; i < t; i++)
+        for(int i = 0; i < str.length(); i++)
         {
-            for(int j = (i+1); j < t; j++)
+            int max = i;
+
+            for(int j = i+1; j < str.length(); j++)
             {
-                int temp = 0;
-
-                if(arr[i] < arr[j])
-                {
-                    temp = arr[j];
-                    arr[j] = arr[i];
-                    arr[i] = temp;
-                }
+                if(arr[max] < arr[j])
+                    max = j;
             }
+            int temp = arr[i];
+            arr[i] = arr[max];
+            arr[max] = temp;
         }
-
-        for(int i = 0; i < t; i++)
-        {
+        for(int i = 0; i < str.length(); i++)
             System.out.print(arr[i]);
-        }
     }
-}
+    }
