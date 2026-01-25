@@ -1,13 +1,16 @@
+import java.io.*;
 import java.util.*;
-import java.lang.Math;
-public class Main
-{
-    public static void main(String args[])
-    {
-        Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt();
-        int m = sc.nextInt();
+public class Main {
+    public static void main(String args[]) throws NumberFormatException, IOException {
+        // Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        //StringBuilder sb = new StringBuilder();
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
 
         int[] arr = new int[n+1];
 
@@ -18,23 +21,27 @@ public class Main
 
         for(int i = 0; i < m; i++)
         {
-            int a = sc.nextInt();
-            int b = sc.nextInt();
+            st = new StringTokenizer(br.readLine());
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
 
-            while(a < b)
-            {
-                int temp = arr[a];
-                arr[a] = arr[b];
-                arr[b] = temp;
-                a += 1;
-                b -= 1;
-            }
+            rever(a, b, arr);
         }
 
         for(int i = 1; i <= n; i++)
-        {
             System.out.printf("%d ", arr[i]);
-        }
-
     }
-}
+
+    static void rever(int start, int end, int[] arr)
+    {
+        while(start < end)
+        {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+
+            start++;
+            end--;
+        }
+    }
+    }
