@@ -2,35 +2,45 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String args[]) throws IOException {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String args[]) throws NumberFormatException, IOException {
+        // Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
 
-        int n = sc.nextInt();
+        // 총 2n-1줄의 출력, 각 줄 별 2n-1개의 별
 
-        for(int j = 1; j <= n; j++)
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int n = Integer.parseInt(st.nextToken());
+
+        for(int i = 1; i <= n; i++)
         {
-            for(int i = 1; i <= (n-j); i++)
+            for(int j = 1; j <= n-i; j++)
             {
-                System.out.print(" ");
+                sb.append(" ");
             }
-            for(int i = 1; i <= 2*j-1; i++)
+
+            for(int j = 1; j <= 2*i-1; j++)
             {
-                System.out.print("*");
+                sb.append("*");
             }
-            System.out.println();
+            sb.append('\n');
         }
 
         for(int i = n-1; i > 0; i--)
         {
-            for(int j = n-i; j > 0; j--)
+            for(int j = n - i; j > 0; j--)
             {
-                System.out.print(" ");
+                sb.append(" ");
             }
+            
             for(int j = 2*i-1; j > 0; j--)
             {
-                System.out.print("*");
+                sb.append("*");
             }
-            System.out.println();
+            sb.append('\n');
         }
+
+        System.out.println(sb.toString());
     }
-}
+    }
