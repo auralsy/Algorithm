@@ -1,34 +1,61 @@
-import java.util.Arrays;
-//java.io.~ 는 다 임포트하는것
 import java.io.*;
-
-//scanner하고 sysout으로 하니까 시간 초과 나옴
-//그래서 bufferd랑 stream 사용
+import java.util.*;
 
 public class Main {
+    public static int[] A;
+    public static long result;
+    
+    public static void main(String args[]) throws NumberFormatException, IOException {
+        // Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
 
-	public static void main(String[] args) throws IOException
-	{
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		
-		int n = Integer.parseInt(br.readLine());
-		
-		int[] arr = new int[n];
-		
-		for(int i = 0; i < n; i++)
-		{
-			arr[i] = Integer.parseInt(br.readLine());
-		}
-		
-		Arrays.sort(arr);
-		
-		for(int i = 0; i < n; i++)
-		{
-			bw.write(arr[i] + "\n");
-		}
-		
-		bw.flush(); //BufferedWriter에 저장된 내용을 출력 버퍼에서 실제 출력 스트림으로 보냄.
-		bw.close(); //BufferedWriter를 닫아 자원 해제.
-	}
-}
+        int N = Integer.parseInt(br.readLine());
+        A = new int[N];
+        for(int i = 0; i < N; i++)
+        {
+            A[i] = Integer.parseInt(br.readLine());
+        }
+        
+        Radix_Sort(A, 5);
+        
+        for(int i = 0; i < N; i++)
+        {
+            sb.append(A[i]).append('\n');
+        }
+
+        System.out.println(sb);
+    }
+    
+    public static void Radix_Sort(int[] A, int max_size)
+    {
+        int[] output = new int[A.length];
+        int jarisu = 1;
+        int count = 0;
+        
+        while(count != max_size)
+        {
+            int[] bucket = new int[10];
+            
+            for(int i = 0; i < A.length; i++)
+            {
+                bucket[(A[i]/jarisu) % 10]++;
+            }
+            for(int i = 1; i < 10; i++)
+            {
+                bucket[i] += bucket[i-1];
+            }
+            for(int i = A.length - 1; i >= 0; i--)
+            {
+                output[bucket[(A[i]/jarisu % 10)] - 1] = A[i];
+                bucket[(A[i]/jarisu) % 10]--;
+            }
+            for(int i = 0; i < A.length; i++)
+            {
+                A[i] = output[i];
+            }
+            jarisu = jarisu * 10;
+            count++;
+        }
+    }
+    }
